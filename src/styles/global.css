@@ -1,0 +1,40 @@
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --color-bg: #ffffff;
+  --color-text: #1a1a1a;
+  --color-text-light: #666666;
+  --color-accent: #c8a96e;
+  --color-header-bg: #ffffff;
+  --color-footer-bg: #1a1a1a;
+  --color-footer-text: #cccccc;
+  --color-nav-hover: #c8a96e;
+  --font-sans: 'Segoe UI', system-ui, -apple-system, sans-serif;
+  --header-height: 72px;
+  --nav-height: 48px;
+  --footer-height: 48px;
+}
+
+html, body {
+  height: 100%;
+  font-family: var(--font-sans);
+  color: var(--color-text);
+  background-color: var(--color-bg);
+  -webkit-font-smoothing: antialiased;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}

@@ -1,0 +1,73 @@
+---
+const currentPath = Astro.url.pathname;
+
+const navItems = [
+  { label: 'HOME', href: '/' },
+  { label: 'ABOUT', href: '/about' },
+  { label: 'PRODUCT', href: '/product' },
+  { label: 'CONTACT', href: '/contact' },
+];
+---
+
+<header class="site-header">
+  <div class="logo-bar">
+    <a href="/">
+      <img src="/logo.png" alt="Peanut Butter Sandwich" class="logo" />
+    </a>
+  </div>
+  <nav class="nav-bar">
+    {navItems.map((item) => (
+      <a
+        href={item.href}
+        class:list={['nav-link', { active: currentPath === item.href }]}
+      >
+        {item.label}
+      </a>
+    ))}
+  </nav>
+</header>
+
+<style>
+  .site-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    background: var(--color-header-bg);
+  }
+
+  .logo-bar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: var(--header-height);
+  }
+
+  .logo {
+    max-height: 40px;
+    width: auto;
+  }
+
+  .nav-bar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 3rem;
+    height: var(--nav-height);
+    border-bottom: 1px solid #e5e5e5;
+  }
+
+  .nav-link {
+    font-size: 0.85rem;
+    font-weight: 500;
+    letter-spacing: 0.15em;
+    color: var(--color-text-light);
+    transition: color 0.2s ease;
+  }
+
+  .nav-link:hover,
+  .nav-link.active {
+    color: var(--color-nav-hover);
+  }
+</style>

@@ -1,0 +1,46 @@
+---
+import '../styles/global.css';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+
+interface Props {
+  title: string;
+  noScroll?: boolean;
+}
+
+const { title, noScroll = false } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Peanut Butter Sandwich" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <title>{title} | Peanut Butter Sandwich</title>
+  </head>
+  <body class:list={[{ 'no-scroll': noScroll }]}>
+    <Header />
+    <main>
+      <slot />
+    </main>
+    <Footer />
+  </body>
+</html>
+
+<style>
+  main {
+    padding-top: calc(var(--header-height) + var(--nav-height));
+    min-height: calc(100vh - var(--footer-height));
+  }
+
+  :global(body.no-scroll) {
+    overflow: hidden;
+    height: 100vh;
+  }
+
+  :global(body.no-scroll main) {
+    height: calc(100vh - var(--header-height) - var(--nav-height) - var(--footer-height));
+  }
+</style>
